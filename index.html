@@ -1,0 +1,127 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gazetter</title>
+    
+      <link rel="stylesheet" href="./libs/css/bootstrap.css">
+      <link rel="stylesheet" href="./libs/css/font-awesome.css">
+      <link rel="stylesheet" href="./libs/css/MarkerCluster.css">
+      <link rel="stylesheet" href="./libs/css/leaflet.css">
+      <link rel="stylesheet" href="libs/css/MarkerCluster.Default.css">
+      <link rel="stylesheet" href="./libs/css/styles.css">
+    </head>
+<body>
+    
+        <div>
+            
+        </div>
+    <div class="container">
+        <div class="nav-container">
+            
+        <nav id="navbar" class="navbar fixed-top flex-row">
+            
+       
+        <select id="dropdown" class="custom-select" name="locality">
+        
+               <option value="">Select a country</option>
+               
+
+            </select>
+            <button id="more-info-button" class="btn btn-primary">More Info</button>
+            
+        </nav>
+        </div>
+    </div>
+    <img id="loadingDiv" src="./libs/images/loader.gif" alt="">
+
+
+        <div id="mapid"></div>
+        
+        <div id="more-info">
+
+                <div class="img-container">
+                   <img src="" alt="" class="img-fluid" id="country-flag">
+                   <h3 id="country-name"> </h2>
+                </div>
+                   <hr>
+                    <div class="info-container">
+
+
+                    <div class="country-info">
+
+                        <h5 class="table-header">Country<br>Information</h4>
+                        <table class="table table-borderless">
+
+                            <tr>
+                                <td>Region:</td>
+                                <td id="country-region"></td>
+                            </tr>
+                            <tr>
+                                <td>Capital:</td>
+                                <td class="country-capital"></td>
+                            </tr>
+                            <tr>
+                                <td>Currency:</td>
+                                <td id="currency"></td>
+                            </tr>
+                            <tr>
+                                <td>USD XR:</td>
+                                <td id="country-exchange"></td>
+                            </tr>
+                            <tr>
+                                <td>Population:</td>
+                                <td id="population"></td>
+                            </tr>
+                            
+
+                        </table>
+                    </div>
+
+                    
+
+                    <div class="weather-info">
+                        <h5 class="table-header">Weather in<br><span class="country-capital"></h4>
+                        <table class="table table-borderless">
+                            <tr>
+                                <td>Temp:</td>
+                                <td id="temp"></td>
+                            </tr>
+                           
+                            <tr>
+                                <td>Feels like:</td>
+                                <td id="feels-like"></td>
+                            </tr>
+                            <tr>
+                                <td>Pressure:</td>
+                                <td id="pressure"></td>
+                            </tr>
+                            <tr>
+                                <td>Humidity:</td>
+                                <td id="humidity"></td>
+                            </tr>
+                           
+                        </table>
+
+
+
+                    </div>
+                
+                </div>
+        </div>
+                   
+            
+        </div>
+    
+ 
+
+
+    <script src="./libs/js/jquery.js"></script>
+    <script src="./libs/js/leaflet.js"></script>
+    <script src="./libs/js/leaflet.markercluster.js"></script>
+    <script src="./libs/js/script.js"></script>
+</body>
+</html>
