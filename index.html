@@ -1,127 +1,255 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <title>Gazetter</title>
-    
-      <link rel="stylesheet" href="./libs/css/bootstrap.css">
-      <link rel="stylesheet" href="./libs/css/font-awesome.css">
-      <link rel="stylesheet" href="./libs/css/MarkerCluster.css">
-      <link rel="stylesheet" href="./libs/css/leaflet.css">
-      <link rel="stylesheet" href="libs/css/MarkerCluster.Default.css">
-      <link rel="stylesheet" href="./libs/css/styles.css">
-    </head>
-<body>
-    
-        <div>
-            
-        </div>
+
+    <link rel="stylesheet" href="./libs/css/bootstrap.css" />
+    <link rel="stylesheet" href="./libs/css/font-awesome.css" />
+    <link rel="stylesheet" href="./libs/css/MarkerCluster.css" />
+    <link rel="stylesheet" href="./libs/css/leaflet.css" />
+    <link rel="stylesheet" href="libs/css/MarkerCluster.Default.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="stylesheet" href="./libs/css/styles.css" />
+  </head>
+  <body>
+
     <div class="container">
-        <div class="nav-container">
-            
-        <nav id="navbar" class="navbar fixed-top flex-row">
-            
-       
-        <select id="dropdown" class="custom-select" name="locality">
-        
-               <option value="">Select a country</option>
-               
-
-            </select>
-            <button id="more-info-button" class="btn btn-primary">More Info</button>
-            
+      <div class="nav-container">
+        <nav id="navbar" class="navbar fixed-top">
+          <select id="dropdown" class="custom-select" name="locality">
+            <option value="initial">Select a country</option>
+          </select>   
+          
+            <div id="iss-button" name="satellite" class="info-btn">
+              <i class='fas fa-satellite icon'></i>
+            </div>
+          <div class="arrow_box satellite-popup"><p>Track ISS</p></div>
+      
         </nav>
-        </div>
+      </div>
     </div>
-    <img id="loadingDiv" src="./libs/images/loader.gif" alt="">
+    <img id="loadingDiv" src="./libs/images/loader.gif" alt="" />
+
+    <div id="mapid"></div>
 
 
-        <div id="mapid"></div>
-        
-        <div id="more-info">
-
-                <div class="img-container">
-                   <img src="" alt="" class="img-fluid" id="country-flag">
-                   <h3 id="country-name"> </h2>
-                </div>
-                   <hr>
-                    <div class="info-container">
-
-
-                    <div class="country-info">
-
-                        <h5 class="table-header">Country<br>Information</h4>
-                        <table class="table table-borderless">
-
-                            <tr>
-                                <td>Region:</td>
-                                <td id="country-region"></td>
-                            </tr>
-                            <tr>
-                                <td>Capital:</td>
-                                <td class="country-capital"></td>
-                            </tr>
-                            <tr>
-                                <td>Currency:</td>
-                                <td id="currency"></td>
-                            </tr>
-                            <tr>
-                                <td>USD XR:</td>
-                                <td id="country-exchange"></td>
-                            </tr>
-                            <tr>
-                                <td>Population:</td>
-                                <td id="population"></td>
-                            </tr>
-                            
-
-                        </table>
-                    </div>
-
-                    
-
-                    <div class="weather-info">
-                        <h5 class="table-header">Weather in<br><span class="country-capital"></h4>
-                        <table class="table table-borderless">
-                            <tr>
-                                <td>Temp:</td>
-                                <td id="temp"></td>
-                            </tr>
-                           
-                            <tr>
-                                <td>Feels like:</td>
-                                <td id="feels-like"></td>
-                            </tr>
-                            <tr>
-                                <td>Pressure:</td>
-                                <td id="pressure"></td>
-                            </tr>
-                            <tr>
-                                <td>Humidity:</td>
-                                <td id="humidity"></td>
-                            </tr>
-                           
-                        </table>
-
-
-
-                    </div>
-                
-                </div>
-        </div>
-                   
-            
-        </div>
     
- 
 
+
+    <div class="buttons">
+      <div id="more-info-button" class="info-btn">
+        <i class="fas fa-info-circle info-icon"></i>
+      </div>
+      <div id="more-virus-button" class="info-btn">
+        <i class="fas fa-virus virus-icon"></i>
+      </div>
+      <div id="more-weather-button" class="info-btn">
+        <i class="fas fa-cloud-sun weather-icon"></i>
+      </div>
+    </div>
+
+
+    <div class="more-info" id="more-country-info">
+      <div class="info-container">
+        <div class="country-info">
+          <table class="table table-borderless">
+            <thead>
+              <tr>
+                <td align="center" colspan="3">
+                  <img src="" alt="" class="img-fluid" id="country-flag" />
+                  <br /><span id="country-name"></span>
+                </td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><i class="fas fa-globe icon"></i></td>
+                <td>Native Name</td>
+                <td id="native-name"></td>
+              </tr>
+              
+                <td><i class="fas fa-user-friends icon"></i></td>
+                <td>Demonym</td>
+                <td id="demonym"></td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-globe-americas icon"></i></td>
+                <td>Region</td>
+                <td id="country-region"></td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-map-marked-alt icon"></i></td>
+                <td>Subregion</td>
+                <td id="country-subregion"></td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-language icon"></i></td>
+                <td>Language</td>
+                <td id="language"></td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-city icon"></i></td>
+                <td>Capital</td>
+                <td class="country-capital"></td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-money-bill-alt icon"></i></td>
+                <td>Currency</td>
+                <td id="currency"></td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-exchange-alt icon"></i></td>
+                <td>USD XR</td>
+                <td id="country-exchange"></td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-phone-alt icon"></i></td>
+                <td>Calling Code</td>
+                <td id="calling-code"></td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-users icon"></i></td>
+                <td>Population</td>
+                <td id="population"></td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-clock icon"></i></td>
+                <td>Timezone</td>
+                <td id="time-zone"></td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-flag icon"></i></td>
+                <td>Country Codes</td>
+                <td id="alpha-codes"></td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-edit icon"></i></td>
+                <td>Alternative Names</td>
+                <td id="alt-spellings"></td>
+              </tr>
+              <tr>
+              <tr>
+                <td><i class="fas fa-wifi icon"></i></td>
+                <td>Web Domain</td>
+                <td id="domain"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!--! Covid Table-->
+    <div class="more-info" id="more-covid-info">
+      <div class="info-container">
+        <div class="country-info">
+          <table class="table table-borderless">
+            <thead>
+            <tr>
+              <td align="center" colspan="3">
+                <h5><span id="covid-country"></span> Covid Statistics</h5>
+              </td>
+            </tr>
+          </thead>
+          <tbody>            <tr>
+              <td><i class="fas fa-lungs-virus icon"></i></td>
+              <td>New Cases</td>
+              <td id="new-confirmed"></td>
+            </tr>
+            <tr>
+              <td><i class="fas fa-feather icon"></i></td>
+              <td>New Deaths</td>
+              <td id="new-deaths"></td>
+            </tr>
+            <tr>
+              <td><i class="fas fa-heartbeat icon" icon></i></td>
+              <td>Newly Recovered</td>
+              <td id="new-recovered"></td>
+            </tr>
+
+            <tr>
+              <td><i class="fas fa-lungs-virus icon"> </i></td>
+              <td>Total Cases</td>
+              <td id="total-confirmed"></td>
+            </tr>
+            <tr>
+              <td><i class="fas fa-feather icon"></i></td>
+              <td>Total Deaths</td>
+              <td id="total-deaths"></td>
+            </tr>
+            <tr>
+              <td><i class="fas fa-heartbeat icon"></i></td>
+              <td>Total Recovered</td>
+              <td id="total-recovered"></td>
+            </tr>
+          </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="more-info" id="more-weather-info">
+      <div class="info-container">
+        <div class="country-info">
+          <table class="table table-borderless">
+            <thead>
+            <tr>
+              <td colspan="3" align="center">
+                <h5>Weather in <span class="country-capital"></span></h5>
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><i class="fas fa-thermometer-half icon"></i></td>
+              <td>Temp</td>
+              <td id="temp"></td>
+            </tr>
+
+            <tr>
+              <td><i class="fas fa-thermometer icon"></i></td>
+              <td>Feels like</td>
+              <td id="feels-like"></td>
+            </tr>
+            <tr>
+              <td><i class="fas fa-temperature-high icon"></i></td>
+              <td>Min/Max</td>
+              <td id="min-max"></td>
+            </tr>
+            <tr>
+              <td><i class="fas fa-angle-double-down icon"></i></td>
+              <td>Pressure</td>
+              <td id="pressure"></td>
+            </tr>
+            <tr>
+              <td><i class="fas fa-tint icon"></i></td>
+              <td>Humidity</td>
+              <td id="humidity"></td>
+            </tr>
+            <tr>
+              <td><i class="fas fa-sun icon"></i></td>
+              <td>Sunrise</td>
+              <td id="sunrise"></td>
+            </tr>
+            <tr>
+              <td><i class="fas fa-moon icon"></i></td>
+              <td>Sunset</td>
+              <td id="sunset"></td>
+            </tr>
+            
+          </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
 
     <script src="./libs/js/jquery.js"></script>
+    <script src="./libs/js/all.min.js"></script>
     <script src="./libs/js/leaflet.js"></script>
     <script src="./libs/js/leaflet.markercluster.js"></script>
     <script src="./libs/js/script.js"></script>
-</body>
+  </body>
 </html>

@@ -362,13 +362,16 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	}
 .leaflet-control-layers .leaflet-control-layers-list,
 .leaflet-control-layers-expanded .leaflet-control-layers-toggle {
+	z-index: 900000000;
 	display: none;
 	}
 .leaflet-control-layers-expanded .leaflet-control-layers-list {
 	display: block;
 	position: relative;
+	z-index: 900000000;
 	}
 .leaflet-control-layers-expanded {
+	z-index: 900000000;
 	padding: 6px 10px 6px 6px;
 	color: #333;
 	background: #fff;
@@ -394,6 +397,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
 /* Default icon URLs */
 .leaflet-default-icon-path {
+	z-index: 999999999;
 	background-image: url(../images/marker-icon.png);
 	}
 

@@ -1,8 +1,28 @@
+
+
 <?php
 
 	$executionStartTime = microtime(true) / 1000;
-	 
-	
+
+
+	//covid
+	$covidUrl = "https://api.covid19api.com/summary";
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_URL,$covidUrl);
+
+	$covidResult=curl_exec($ch);
+
+	curl_close($ch);
+
+	$decodedCovid = json_decode($covidResult,true);
+
+	$covid = null;
+
+	foreach($decodedCovid['Countries'] as $covids)
+		if ($covids['CountryCode'] == $_REQUEST['iso2'])
+			$covid = $covids;
 
 	//airport
 	$weatherStationUrl = "http://api.geonames.org/weatherJSON?north=" . $_REQUEST['north'] . '&south='. $_REQUEST['south'] . "&east=" . $_REQUEST['east'] . '&west=' . $_REQUEST['west'] . "&username=thomaslloydd";
@@ -43,6 +63,9 @@
 	curl_close($ch);
 
 	$decodedEarthquakes = json_decode($earthquakeResult,true);
+
+
+			 
 	
 
 	//Wiki Bounding Box
@@ -58,6 +81,10 @@
 	curl_close($ch);
 
 	$decodedWiki = json_decode($wikiResult,true);
+
+	
+	
+	
 	
 
 
@@ -67,6 +94,7 @@
 	$output['WikiBox'] = $decodedWiki['geonames'];
 	$output['Earthquakes'] = $decodedEarthquakes;
 	$output['wStation'] = $decodedweatherStation;
+	$output['covid'] = $covid;
 
 	
 	
