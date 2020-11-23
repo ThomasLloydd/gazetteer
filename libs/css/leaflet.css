@@ -291,6 +291,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	}
 .leaflet-bar a,
 .leaflet-control-layers-toggle {
+	z-index: 2000;
 	background-position: 50% 50%;
 	background-repeat: no-repeat;
 	display: block;
@@ -343,6 +344,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 /* layers control */
 
 .leaflet-control-layers {
+	z-index: 1000;
 	box-shadow: 0 1px 5px rgba(0,0,0,0.4);
 	background: #fff;
 	border-radius: 5px;
@@ -351,27 +353,30 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	background-image: url(../images/layers.png);
 	width: 36px;
 	height: 36px;
+	z-index: 1000;
 	}
 .leaflet-retina .leaflet-control-layers-toggle {
 	background-image: url(../images/layers-2x.png);
 	background-size: 26px 26px;
+	z-index: 1000;
 	}
 .leaflet-touch .leaflet-control-layers-toggle {
 	width: 44px;
 	height: 44px;
+	z-index: 1000;
 	}
 .leaflet-control-layers .leaflet-control-layers-list,
 .leaflet-control-layers-expanded .leaflet-control-layers-toggle {
-	z-index: 900000000;
+	z-index: 1000;
 	display: none;
 	}
 .leaflet-control-layers-expanded .leaflet-control-layers-list {
 	display: block;
 	position: relative;
-	z-index: 900000000;
+	z-index: 1000;
 	}
 .leaflet-control-layers-expanded {
-	z-index: 900000000;
+	z-index: 1000;
 	padding: 6px 10px 6px 6px;
 	color: #333;
 	background: #fff;
@@ -385,19 +390,22 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	margin-top: 2px;
 	position: relative;
 	top: 1px;
+	z-index: 1000;
 	}
 .leaflet-control-layers label {
 	display: block;
+	z-index: 1000;
 	}
 .leaflet-control-layers-separator {
 	height: 0;
 	border-top: 1px solid #ddd;
 	margin: 5px -10px 5px -6px;
+	z-index: 1000;
 	}
 
 /* Default icon URLs */
 .leaflet-default-icon-path {
-	z-index: 999999999;
+	z-index: 1000;
 	background-image: url(../images/marker-icon.png);
 	}
 
@@ -457,9 +465,11 @@ svg.leaflet-image-layer.leaflet-interactive path {
 .leaflet-touch .leaflet-control-layers,
 .leaflet-touch .leaflet-bar {
 	box-shadow: none;
+	z-index: 1000;
 	}
 .leaflet-touch .leaflet-control-layers,
 .leaflet-touch .leaflet-bar {
+	z-index: 1000;
 	border: 2px solid rgba(0,0,0,0.2);
 	background-clip: padding-box;
 	}
@@ -553,6 +563,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 .leaflet-oldie .leaflet-control-layers,
 .leaflet-oldie .leaflet-popup-content-wrapper,
 .leaflet-oldie .leaflet-popup-tip {
+	z-index: 9999999999;
 	border: 1px solid #999;
 	}
 

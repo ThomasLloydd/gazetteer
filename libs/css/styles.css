@@ -148,9 +148,8 @@ color: rgb(236, 134, 219);
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 1500;
+  z-index: 500;
 }
-
 
 .buttons {
   display: flex;
@@ -161,6 +160,7 @@ color: rgb(236, 134, 219);
   z-index: 1000000;
 }
 #navbar select {
+  z-index: 400;
   width: 250px;
 }
 
@@ -226,23 +226,91 @@ color: rgb(236, 134, 219);
   top: 10px;
   z-index: 1000;
   max-height: 90vh;
-  overflow-y: auto;
   color: rgb(155, 155, 155);
   border-radius: 10px;
+
 }
 
-#more-country-info table {
-  min-width: 500px;
-  border-radius: 10px;
+.deleteMeetingClose {
+  font-size: 1.5em;
+  cursor: pointer;
+  position: absolute;
+  right: 6px;
+  top: 1px;
 }
+
+.more-info thead {
+  display: table;
+  width: 100%;
+  color: black; 
+}
+
+
+
+.more-info tbody {
+  display: block; 
+  max-height: 90vh; 
+  overflow-y: auto;
+}
+
+.more-info .table td:nth-child(1) {
+  width: 20%;
+  text-align: center;
+}
+
+.more-info .table td:nth-child(2) {
+
+  width: 40%;
+  text-align: left;
+}
+
+.more-info .table  td:nth-child(3) {
+  width: 40%;
+  text-align: right;
+}
+
+
+.more-info .icon {
+  font-size: 1rem;
+}
+
+
+.more-info tr {
+  display: table;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.more-info td {
+  text-align: center;
+  border-bottom: none;
+  border-left: none;
+  margin: 20px;
+}
+
+
+
 
 #more-weather-info table {
   min-width: 300px;
 }
 #more-covid-info table {
   min-width: 400px;
+
 }
 
+#more-country-info thead {
+  background-color: rgb(21, 0, 255);
+ 
+}
+
+#more-weather-info thead {
+  background-color: red;
+  
+}
+#more-covid-info thead {
+  background-color: green;
+}
 #country-flag {
   margin: 0 auto;
   max-width: 100px;
@@ -254,6 +322,7 @@ color: rgb(236, 134, 219);
 .img-container {
   text-align: center;
 }
+
 .more-info tbody tr:nth-child(odd){
   background-color: rgb(233, 232, 232);
 }
@@ -263,12 +332,9 @@ tr:last-child td:first-child { border-bottom-left-radius: 10px; }
 tr:last-child td:last-child { border-bottom-right-radius: 10px; }
 
 
-td{
-  vertical-align: middle;
-}
 
-tr{
-  vertical-align: middle;
+.more-info td {
+  padding-top: 18px;
 }
 
 td:nth-child(1) {
@@ -277,6 +343,7 @@ td:nth-child(1) {
 }
 
 td:nth-child(2) {
+  text-align: left;
   font-size: 14px;
 }
 
@@ -284,23 +351,55 @@ td:nth-child(3) {
   font-size: 16px;
   text-align: right;
   color: rgb(87, 86, 86);
-  padding-right: 30px;
+  padding-right: 20px;
 }
 
+.more-info th {
+  text-align: center;
+  color: white;
+}
+th {
+  border-radius: 10px 10px 0px 0px;
+}
 
 .table {
-  max-width: 300px;
-  overflow-y: scroll;
   background-color: aliceblue;
   border-radius: 10px;
   margin-bottom: 0;
 }
+
+.more-info thead h5 {
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 10px;
+}
+
 
 /*Media Queries*/
 
 @media only screen and (max-width: 1373px){
   .more-info{
     top: 50px;
+    max-height: 60vh;
+  }
+
+  .more-info tbody::-webkit-scrollbar {
+    width: 10px;
+  }
+  .more-info tbody::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  .more-info tbody::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  .more-info tbody::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  } 
+
+  .more-info tbody {
+    display: block; 
+    max-height: 60vh; 
+    overflow-y: auto;
   }
   }
 
@@ -310,12 +409,32 @@ td:nth-child(3) {
     width: 70%;
   }
 
-  #more-country-info table {
-    width: 100vw;
+  .more-info table {
+    width: 100%;
   }
+  
+  .leaflet-control-layers-expanded, .leaflet-control-layers, .leaflet-control{
+    z-index: 5000;
+  }
+  
+  .more-info tbody {
+    display: block; 
+    max-height: 40vh; 
+    overflow-y: scroll;
+  }
+  
+
+
+  
+
+  
+
+
+
+  
 
   #navbar select{
-    width: 100%;
+    width: 80%;
   }
 
   h3 {
@@ -328,31 +447,36 @@ td:nth-child(3) {
     flex-direction: row;
   }
   #country-flag {
-    max-width: 100px;
+    max-width: 60px;
   }
 
   .more-info {
     left: 0px;
     top: initial;
     bottom: 0px;
-    width: 100%;
-    max-height: 40vh;
+    width: 100vw;
+    max-height: 500px;
     min-height: 0;
-    overflow-y: scroll;
-    border-radius: 0px;
-    -webkit-box-shadow: 0px 3px 17px 0px rgba(0,0,0,0.75);
--moz-box-shadow: 0px 3px 17px 0px rgba(0,0,0,0.75);
-box-shadow: 0px 3px 17px 0px rgba(0,0,0,0.75);
-  }
-  #more-country-info table {
-    max-width: 100%;
-    min-width: 0;
   }
 
-  .table {
-    max-width: 100%;
-    min-width: 0;
+
+
+  #more-country-info table {
+    min-width: initial;
   }
+  
+  #more-weather-info table {
+    min-width:  initial;
+  }
+  #more-covid-info table {
+    min-width:  initial;
+    max-width: initial;
+  }
+
+  #more-covid-info {
+    max-width: initial;
+  }
+
 
 }
 

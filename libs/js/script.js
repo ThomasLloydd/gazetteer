@@ -13,8 +13,8 @@ let ISS;
 let issMarker;
 let ISSTimeout;
 let myBounds = [
-  [-90, -180],
-  [90, 180],
+  [-90, -400],
+  [90, 400],
 ];
 //Icon Styles
 const earthquakeIcon = L.icon({
@@ -93,8 +93,8 @@ const Esri_NatGeoWorldMap = L.tileLayer(
   }
 );
 const baseMaps = {
-  "Nat Geo World Map": Esri_NatGeoWorldMap,
-  "Open Street Map": OpenStreetMap_Mapnik,
+  "World Map": Esri_NatGeoWorldMap,
+  "Street Map": OpenStreetMap_Mapnik,
   "Open Todo": OpenTopoMap,
   "Dark Matter": CartoDB_DarkMatter,
 };
@@ -244,7 +244,7 @@ const trackISS = () => {
       });
       issMarker.addTo(map);
       $('#dropdown').val('initial');
-      map.flyTo([result.ISS.latitude, result.ISS.longitude]);
+      map.panTo([result.ISS.latitude, result.ISS.longitude]);
       $('.satellite-popup').html('Stop ISS')
       $("#iss-button").html("<i class='far fa-stop-circle'></i>");
       $("#iss-button").attr("name", "stop");
@@ -641,6 +641,10 @@ $("#iss-button").on("click", () => {
     }, console.log);
   }
 });
+
+$('.deleteMeetingClose').on('click', () => {
+  $('.more-info').hide();
+})
 
  
   $('#iss-button').on('mouseenter touchstart', () => {
