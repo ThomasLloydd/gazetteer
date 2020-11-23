@@ -1,6 +1,5 @@
 //Initialise vars
 let geoPoly;
-let $loading = $("#loadingDiv").hide();
 let lat = 50;
 let lng = 50;
 let bounds;
@@ -16,6 +15,7 @@ let myBounds = [
   [-90, -400],
   [90, 400],
 ];
+var width = $(window).width();
 //Icon Styles
 const earthquakeIcon = L.icon({
   iconUrl: "./libs/images/earthquake-icon.png",
@@ -419,7 +419,8 @@ if (result.places.geonames){
     markers.addLayer(cityMarker);
   });
 } else {
-  $loading.hide();
+  setTimeout( $('.loader').hide(), 3000);
+ 
 }
 };
 
@@ -660,13 +661,27 @@ $('.deleteMeetingClose').on('click', () => {
 //Shows loading div while ajax calls are being performed
 $(document)
   .ajaxStart(function () {
-    $loading.show();
+    $('.loader').show();
   })
   .ajaxStop(function () {
-    $loading.hide();
+    $('.loader').hide();
   });
 
 //Populates select box
 $("document").ready(() => {
   populateSelect();
 });
+
+
+map.on('popupopen', function (){ 
+  width = $(window).innerWidth();
+  console.log(width);
+  if (width < 960) {
+  $('#buttons-container, .leaflet-control').hide();
+  }
+})
+
+map.on('popupclose', function (){ 
+ 
+  $('#buttons-container, .leaflet-control').show();
+})
